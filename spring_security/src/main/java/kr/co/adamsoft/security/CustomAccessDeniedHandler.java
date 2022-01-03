@@ -1,0 +1,22 @@
+package kr.co.adamsoft.security;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+
+	@Override
+	public void handle(HttpServletRequest request, 
+			HttpServletResponse response, AccessDeniedException accessException)
+					throws IOException, ServletException {
+		System.out.println("Access Denied Handler");
+		System.out.println("Redirect....");
+		response.sendRedirect("/accesserror");
+	}
+}
